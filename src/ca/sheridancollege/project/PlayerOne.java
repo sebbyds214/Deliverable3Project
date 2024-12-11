@@ -32,6 +32,10 @@ class PlayerOne extends Player {
         return startingMoney;
     }
     
+    public void subtractBet(int bet){
+        startingMoney -= bet;
+    }
+    
 
     @Override
     public void play() {

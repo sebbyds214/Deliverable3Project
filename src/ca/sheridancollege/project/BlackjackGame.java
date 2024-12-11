@@ -31,6 +31,8 @@ class BlackjackGame extends Game {
         System.out.println("Your starting money: " + player.getStartingMoney() +
                 "\nHow much would you like to bet?");
                 int betTotal = view.getIntInput();
+                player.subtractBet(betTotal);
+                System.out.println("Current Balance: " + player.getStartingMoney());
         
         deck.shuffle();
         player.addCard(deck.drawCard());
@@ -53,6 +55,7 @@ class BlackjackGame extends Game {
                 player.showHand();
                 if (player.calculateHandValue() > 21) {
                     view.display("Bust! You lose.");
+                    System.out.println("You lost: " + betTotal);
                     return;
                 }
             } else if (action.equalsIgnoreCase("stand")) {
