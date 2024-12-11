@@ -27,6 +27,11 @@ class PlayerOne extends Player {
     public void receiveWinnings(int amount) {
         startingMoney += amount;
     }
+    
+    public int getStartingMoney(){
+        return startingMoney;
+    }
+    
 
     @Override
     public void play() {

@@ -24,4 +24,8 @@ class CLIView {
     public String getInput() {
         return scanner.nextLine();
     }
+    
+    public int getIntInput() {
+        return scanner.nextInt();
+    }
 }

@@ -13,6 +13,7 @@ class BlackjackGame extends Game {
     private Dealer dealer;
     private GroupOfCards deck;
     private CLIView view;
+    
 
     public BlackjackGame(String name, CLIView view) {
         super(name);
@@ -24,6 +25,13 @@ class BlackjackGame extends Game {
 
     @Override
     public void play() {
+        
+        
+        
+        System.out.println("Your starting money: " + player.getStartingMoney() +
+                "\nHow much would you like to bet?");
+                int betTotal = view.getIntInput();
+        
         deck.shuffle();
         player.addCard(deck.drawCard());
         player.addCard(deck.drawCard());
@@ -60,7 +68,9 @@ class BlackjackGame extends Game {
         int dealerValue = dealer.calculateHandValue();
 
         if (dealerValue > 21 || playerValue > dealerValue) {
-            view.display("You win!");
+            player.receiveWinnings(betTotal * 2);
+            view.display("You win! your total money is now: " + 
+                    player.getStartingMoney());
         } else if (playerValue == dealerValue) {
             view.display("It's a tie!");
         } else {
@@ -68,8 +78,4 @@ class BlackjackGame extends Game {
         }
     }
 
-    @Override
-    public void declareWinner() {
-        // Additional logic to declare the winner
-    }
 }
